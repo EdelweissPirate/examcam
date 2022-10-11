@@ -1,6 +1,6 @@
 {
   "name": "exam_camv11-autoupdate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -20,6 +20,6 @@
   },
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/[YOUR USERNAME]/[YOUR REPO NAME].git"
+    "url" : "https://github.com/EdelweissPirate/examcam.git"
   }
 }
