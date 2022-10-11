@@ -30,11 +30,23 @@
     "url" : "https://github.com/EdelweissPirate/examcam.git"
   },
   "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "EdelweissPirate",
+        "repo": "examcam"
+      }
+    ],
+    "productName": "examcam",
+    "appId": "examcam",
     "directories": {
       "buildResources": "."
     },
     "win": {
-      "icon": "./assets/icon.ico"
+      "icon": "./assets/icon.ico",
+      "publish": [
+        "github"
+      ]
     },
     "asarUnpack": [
       "node_modules/ffmpeg-static/bin/${os}/${arch}/ffmpeg",
