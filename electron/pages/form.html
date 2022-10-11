@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+        <link href="../../styles.css" rel="stylesheet">
+        <title>ExamCam - Saving Wizard</title>
+    </head>
+    <body>
+        
+        <div id="root">
+            <div class="container-form">
+                <h1>Save Wizard</h1>
+                    
+                <section class="save-wizard">
+                    <form id="form-save-wizard">
+                        <div class="form-group">
+                            <input
+                                placeholder="Please enter the Course ID"
+                                name="courseId"
+                                id="courseID_form"
+                                required
+                                autofocus
+                            />
+                        </div>
+    
+                        <div class="form-group">
+                            <input
+                                placeholder="Please enter the Course Field"
+                                name="field"
+                                id="courseField_form"
+                                required
+                            />
+                        </div>
+    
+                        <div class="form-group">
+                            <input
+                                placeholder="Please enter the Course Category"
+                                name="category"
+                                id="courseCategory_form"
+                                required
+                            />
+                        </div>
+    
+                        <div class="form-group">
+                            <button class="btn-enabled" id="submit-save-wizard" style="width: 120px;">OK</button>
+                        </div>
+                    </form>
+                </section>
+                </div>
+            </div>
+        </div>
+        <!-- You can also require other files to run in this process -->
+        <script src="../saveWizard.js"></script>
+    </body>
+</html>

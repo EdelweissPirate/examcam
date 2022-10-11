@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="../../styles.css" rel="stylesheet">
+    <title>ExamCam</title>
+  </head>
+  <body>
+    
+    <div id="root">
+      <header class="header">
+        <div class='draggable'>
+  
+        </div>
+  
+        <div class="header-inner">
+          <div class="logo">
+            <img src="../../assets/logo.svg" alt="" />
+          </div>
+  
+          <div class="heading">
+            <h1>Exam<span class="strokeme">Cam</span></h1>
+          </div>
+          
+          <ul>
+            <li>
+              <a href="" id="min-window">
+                <img src="../../assets/icons/window-minimize.svg">
+              </a>
+              <a href="" id="close-window">
+                <img src="../../assets/icons/window-close.svg">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <div id="home" class="container">
+        <video id="capture" >
+          <source src="" type="video/mp4" />
+        </video>
+  
+        <div id="controls">
+          <ul>
+            <li>
+              <button class="btn-record btn-disabled" id="start-record">
+                <img id="record_svg" style="color:#e6e6e6; scale: .7;" src="../../assets/icons/circle.svg">
+              </button>
+
+              <button class="btn-disabled" id="stop-record">
+                <img style="color:#e6e6e6; scale: .7;" src="../../assets/icons/square.svg">
+              </button>
+            </li>
+            <li>
+              <!-- <button class="btn-disabled" id="set-dir">
+                <img style="color:#e6e6e6; scale: .8;" src="./assets/icons/folder.svg">
+              </button>
+
+              <button class="btn-disabled" id="save-record">
+                <img style="color:#e6e6e6; scale: .8;" src="./assets/icons/save.svg">
+              </button> -->
+            </li>          
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <p id="copyright">© Copyright 2022</p>
+        <p id="version"></p>
+      </footer>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="../renderer.js"></script>
+  </body>
+</html>

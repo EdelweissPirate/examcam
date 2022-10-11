@@ -1,7 +1,7 @@
 {
-  "name": "exam_camv11-autoupdate",
-  "version": "1.0.1",
-  "description": "",
+  "name": "examcam",
+  "version": "1.0.0",
+  "description": "Exam camera records from webcam and outputs 1fps mp4",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +9,37 @@
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
   },
-  "author": "",
+  "author": "MobiusInstitute",
+  "icon": "assets/icon.ico",
   "license": "ISC",
   "devDependencies": {
     "electron": "^21.1.0",
     "electron-builder": "^23.6.0"
   },
   "dependencies": {
-    "electron-updater": "^5.3.0"
+    "electron-store": "^8.1.0",
+    "electron-updater": "^5.3.0",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^5.1.0",
+    "ffprobe-static": "^3.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^10.1.0"
   },
   "repository": {
     "type" : "git",
     "url" : "https://github.com/EdelweissPirate/examcam.git"
+  },
+  "build": {
+    "directories": {
+      "buildResources": "."
+    },
+    "win": {
+      "icon": "./assets/icon.ico"
+    },
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/bin/${os}/${arch}/ffmpeg",
+      "node_modules/ffmpeg-static/index.js",
+      "node_modules/ffmpeg-static/package.json"
+    ]
   }
 }

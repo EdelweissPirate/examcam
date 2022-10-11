@@ -1,55 +1,49 @@
+// Modules to control application life and create native browser window
+const { app, BrowserWindow, ipcMain } = require('electron')
+const appWindow = require('./electron/window')
+// const { autoUpdater } = require('electron-updater')
+// autoUpdater.autoDownload = true;
 
-const { app, BrowserWindow, ipcMain } = require('electron');
-const { autoUpdater } = require('electron-updater');
+const os = require('os');
 
-let mainWindow;
+var ffmpeg = require('fluent-ffmpeg');
 
-function createWindow () {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
-        },
-    });
-    mainWindow.loadFile('pages/index.html');
-    mainWindow.on('closed', function () {
-        mainWindow = null;
-    });
+global.share = { ipcMain }
+const isWin = os.platform() == 'win32';
 
-    mainWindow.once('ready-to-show', () => {
-        autoUpdater.checkForUpdatesAndNotify();
-    });
+let mainWindow
 
-    autoUpdater.on('update-available', () => {
-        mainWindow.webContents.send('update_available');
-    });
-    autoUpdater.on('update-downloaded', () => {
-        mainWindow.webContents.send('update_downloaded');
-    });
-}
+app.whenReady().then(() => {
+    mainWindow = appWindow.create()
 
-app.on('ready', () => {
-    createWindow();
-});
+    app.on('activate', function () {
+        if (BrowserWindow.getAllWindows().length === 0) mainWindow = appWindow.create()
+    })
+})
 
 app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
+    if (process.platform !== 'darwin') app.quit()
+})
 
-app.on('activate', function () {
-    if (mainWindow === null) {
-        createWindow();
-    }
-});
+//=======Package ffmpeg
+//Get the paths to the packaged versions of the binaries we want to use
+const ffmpegPath = require('ffmpeg-static').replace(
+    'app.asar',
+    'app.asar.unpacked'
+);
+const ffprobePath = require('ffprobe-static').path.replace(
+    'app.asar',
+    'app.asar.unpacked'
+);
 
-ipcMain.on('app_version', (event) => {
-    event.sender.send('app_version', { version: app.getVersion() });
-});
+//tell the ffmpeg package where it can find the needed binaries.
+ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfprobePath(ffprobePath);
 
-ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
-});
+if (isWin) {
+    app.setAppUserModelId(`ExamCam v${app.getVersion()}`);
+}
+
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.
+require('./electron/ipc');

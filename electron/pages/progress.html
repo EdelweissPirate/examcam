@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+        <link href="../../styles.css" rel="stylesheet">
+        <title>ExamCam - Saving...</title>
+    </head>
+    <body>
+        
+        <div id="root">
+            <div class="container-progress">
+                <section id="progress">
+                    <h1 id="progress-status">Saving...</h1>
+                    
+                    <div class="progress-bar">
+                        <div id="progress-green" class="progress-green"></div>
+                    </div>
+
+                    <!-- <div id="estimated-duration" >
+                        
+                    </div> -->
+                </section>
+            </div>
+        </div>
+        <!-- You can also require other files to run in this process -->
+        <script src="../progressWizard.js"></script>
+    </body>
+</html>
