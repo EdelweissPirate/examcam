@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, ipcMain } = require('electron')
 const appWindow = require('./electron/window')
-// const { autoUpdater } = require('electron-updater')
+const { autoUpdater } = require('electron-updater')
 // autoUpdater.autoDownload = true;
 
 const os = require('os');
@@ -15,6 +15,8 @@ let mainWindow
 
 app.whenReady().then(() => {
     mainWindow = appWindow.create()
+
+    autoUpdater.checkForUpdates()
 
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) mainWindow = appWindow.create()
