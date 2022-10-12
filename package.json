@@ -1,6 +1,6 @@
 {
   "name": "examcam",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Exam camera records from webcam and outputs 1fps mp4",
   "main": "main.js",
   "scripts": {
